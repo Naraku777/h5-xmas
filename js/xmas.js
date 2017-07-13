@@ -34,40 +34,42 @@ var Xmas = function () {
   var $pageB = $('.page-b')
   var $pageC = $('.page-c')
 
-  // 观察者
-  var observer = new Observer()
-  // Page A
-  new PageA(function () {
-    observer.publish('completeA')
-  })
-  // Enter page B
-  observer.subscribe('pageB', function () {
-    new PageB(function () {
-      observer.publish("completeB")
-    })
-  })
-  // Enter page C
-  observer.subscribe('pageC', function () {
-    new PageC()
-  })
+  // // 观察者
+  // var observer = new Observer()
+  // // Page A
+  // new PageA(function () {
+  //   observer.publish('completeA')
+  // })
+  // // Enter page B
+  // observer.subscribe('pageB', function () {
+  //   new PageB(function () {
+  //     observer.publish("completeB")
+  //   })
+  // })
+  // // Enter page C
+  // observer.subscribe('pageC', function () {
+  //   new PageC()
+  // })
 
-  // Page A to page B
-  observer.subscribe('completeA', function () {
-    changePage($pageA, 'effect-out', function () {
-      observer.publish('pageB')
-    })
-  })
-  // Page B to page C
-  observer.subscribe('completeB', function () {
-    changePage($pageC, 'effect-in', function () {
-      observer.publish('pageC')
-    })
-  })
+  // // Page A to page B
+  // observer.subscribe('completeA', function () {
+  //   changePage($pageA, 'effect-out', function () {
+  //     observer.publish('pageB')
+  //   })
+  // })
+  // // Page B to page C
+  // observer.subscribe('completeB', function () {
+  //   changePage($pageC, 'effect-in', function () {
+  //     observer.publish('pageC')
+  //   })
+  // })
+
+  new PageA($pageA)
 }
 
 
 $(function () {
-  //Xmas()
+  Xmas()
   var bgAudio = H5Audio('audio/scene.mp3')
   bgAudio.end(function () {
     console.log('Background music ended...')
