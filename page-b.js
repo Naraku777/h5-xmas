@@ -1,0 +1,5 @@
+//
+
+function PageB(){
+  alert('b')
+}
