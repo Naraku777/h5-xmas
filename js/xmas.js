@@ -12,6 +12,23 @@ function changePage(element, effect, callback) {
     })
 }
 
+// Background music
+function H5Audio(url, loop) {
+  var audio = new Audio(url)
+
+  audio.autoplay = true
+  audio.loop = loop || false
+  audio.play()
+
+  return {
+    end: function (callback) {
+      audio.addEventListener('ended', function () {
+        callback && callback()
+      }, false)
+    }
+  }
+}
+
 var Xmas = function () {
   var $pageA = $('.page-a')
   var $pageB = $('.page-b')
@@ -46,26 +63,13 @@ var Xmas = function () {
       observer.publish('pageC')
     })
   })
-
-  // $('#choose').on('change', function (e) {
-  //   var pageName = e.target.value
-
-  //   switch (pageName) {
-  //     case "page-b":
-  //       changePage($pageA, "effect-out", function () {
-  //         new PageB()
-  //       })
-  //       break;
-  //     case "page-c":
-  //       changePage($pageC, "effect-in", function () {
-  //         new PageC()
-  //       })
-  //       break;
-  //   }
-  // })
 }
 
 
 $(function () {
   Xmas()
+  var bgAudio = H5Audio('audio/scene.mp3')
+  bgAudio.end(function () {
+    console.log('Background music ended...')
+  })
 })
