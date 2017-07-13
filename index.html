@@ -7,12 +7,21 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>xmas</title>
   <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/page-a.css">
 </head>
 
 <body>
 
   <div class="container">
-    <section class="page-a bg-adaptive"></section>
+    <!-- page a -->
+    <section class="page-a bg-adaptive">
+      <!-- moon -->
+      <figure class="moon"></figure>
+      <!-- xmas tree -->
+      <figure class="tree"></figure>
+      <!-- cloud -->
+      <figure class="cloud"></figure>
+    </section>
     <section class="page-b bg-adaptive"></section>
     <section class="page-c bg-adaptive"></section>
   </div>
@@ -36,10 +45,12 @@
     var container = doc.querySelector('.container')
 
     var recalc = function () {
-      // 原始比例
+      // Init proportion
       var proportion = 900 / 1440
-      // 自适应容器高度
-      container.style.height = container.clientWidth * proportion + 'px'
+      var clientWidth = docEl.clientWidth
+      // Adaptive container height
+      doc.body.style.height = clientWidth * proportion + 'px'
+      docEl.style.fontSize = 20 * (clientWidth / 320) + 'px'
     }
 
     window.addEventListener(resizeEvt, recalc, false)

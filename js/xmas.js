@@ -67,7 +67,7 @@ var Xmas = function () {
 
 
 $(function () {
-  Xmas()
+  //Xmas()
   var bgAudio = H5Audio('audio/scene.mp3')
   bgAudio.end(function () {
     console.log('Background music ended...')
