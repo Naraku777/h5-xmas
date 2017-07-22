@@ -1,0 +1,184 @@
+/*
+ * css/page-b.css
+ */
+
+.container .page-b {
+  z-index: 40;
+}
+
+
+/* boy action */
+
+.walk-stop {
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+.walk-run {
+  -webkit-animation-play-state: running;
+  -moz-animation-play-state: running;
+  animation-play-state: running;
+}
+
+
+/* xmas boy */
+
+.xmas-boy {
+  width: 3.5rem;
+  height: 4.06rem;
+  position: absolute;
+  z-index: 5;
+  right: -3.5rem;
+  top: 4rem;
+  background: url(http://img.mukewang.com/565d09870001372152510407.png);
+  /* 15 key frame */
+  background-size: 1500% 100%;
+  background-position: 0% 100%;
+}
+
+
+/* boy walk action */
+
+.boy-walk {
+  -webkit-animation: boyWalk .75s steps(4, end) infinite;
+  -moz-animation: boyWalk .75s steps(4, end) infinite;
+  animation: boyWalk .75s steps(4, end) infinite;
+}
+
+@-webkit-keyframes boyWalk {
+  0% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: -400% 100%;
+  }
+}
+
+@-moz-keyframes boyWalk {
+  0% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: -400% 100%;
+  }
+}
+
+@keyframes boyWalk {
+  0% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: -400% 100%;
+  }
+}
+
+
+/* boy undress action */
+
+.boy-undress-step-1 {
+  background-position: -800% 100%;
+}
+
+.boy-undress-step-2 {
+  background-position: -900% 100%;
+}
+
+.boy-undress-step-3 {
+  background-position: -1000% 100%;
+}
+
+
+/* boy stand action */
+
+.boy-stand {
+  background-position: -400% 100%;
+}
+
+
+/* boy open package */
+
+.boy-unwrap {
+  -webkit-animation: boyUnwrap 2s steps(2, end) 1 forwards;
+  -moz-animation: boyUnwrap 2s steps(2, end) 1 forwards;
+  animation: boyUnwrap 2s steps(2, end) 1 forwards;
+}
+
+@-webkit-keyframes boyUnwrap {
+  0% {
+    background-position: -400% 100%;
+  }
+  100% {
+    background-position: -600% 100%;
+  }
+}
+
+@-moz-keyframes boyUnwrap {
+  0% {
+    background-position: -400% 100%;
+  }
+  100% {
+    background-position: -600% 100%;
+  }
+}
+
+@keyframes boyUnwrap {
+  0% {
+    background-position: -400% 100%;
+  }
+  100% {
+    background-position: -600% 100%;
+  }
+}
+
+
+/* boy hug action */
+
+.boy-hug {
+  -webkit-animation: boyHug 1s steps(3, end) 1 forwards;
+  -moz-animation: boyHug 1s steps(3, end) 1 forwards;
+  animation: boyHug 1s steps(3, end) 1 forwards;
+}
+
+@-webkit-keyframes boyHug {
+  0% {
+    background-position: -1000% 100%;
+  }
+  100% {
+    background-position: -1300% 100%;
+  }
+}
+
+@-moz-keyframes boyHug {
+  0% {
+    background-position: -1000% 100%;
+  }
+  100% {
+    background-position: -1300% 100%;
+  }
+}
+
+@keyframes boyHug {
+  0% {
+    background-position: -1000% 100%;
+  }
+  100% {
+    background-position: -1300% 100%;
+  }
+}
+
+
+/* xmas boy head */
+
+.xmas-boy-head {
+  left: 7.85rem;
+  top: 4rem;
+  width: 3.5rem;
+  height: 4.06rem;
+  position: absolute;
+  z-index: 12;
+  background: url(http://img.mukewang.com/565d09870001372152510407.png);
+  background-size: 1400% 100%;
+  background-position: -1300% 100%;
+  display: none;
+}
