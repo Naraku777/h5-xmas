@@ -3,6 +3,10 @@
 function PageA(element) {
   this.$root = element
   this.$boy = element.find('.chs-boy')
+  this.$window = element.find('.window')
+  this.$windowLeft = this.$window.find('.window-left')
+  this.$windowRight = this.$window.find('.window-right')
+
   this.run()
 }
 
@@ -15,8 +19,25 @@ PageA.prototype.next = function (opts) {
   return dfd
 }
 
+PageA.prototype.openWindow = function (callback) {
+  var count = 1
+  var complete = function () {
+    ++count
+    if (count === 2) {
+      callback && callback()
+    }
+  }
+  var bind = function (data) {
+    data.one('transitioned webkitTransitionEnd', function (event) {
+      data.removeClass('window-transition')
+      complete()
+    })
+  }
+  bind(this.$windowLeft.addClass('window-transition').addClass('hover'))
+  bind(this.$windowRight.addClass('window-transition').addClass('hover'))
+}
+
 PageA.prototype.stopWalk = function () {
-  console.log('ok')
   this.$boy.removeClass("chs-boy-deer")
 }
 
@@ -28,13 +49,13 @@ PageA.prototype.run = function (callback) {
   }.bind(this)
 
   next({
-    'time': 10000,
-    "style": {
-      "top": "4rem",
-      "right": "16rem",
-      "scale": "1.2"
-    }
-  })
+      'time': 10000,
+      "style": {
+        "top": "4rem",
+        "right": "16rem",
+        "scale": "1.2"
+      }
+    })
     .then(function () {
       return next({
         "time": 500,
@@ -54,6 +75,15 @@ PageA.prototype.run = function (callback) {
       })
     })
     .then(function () {
-      that.stopWalk();
-    })
+      return next({}).then(function () {
+        that.stopWalk()
+      })
+    }).then(
+      function () {
+        that.openWindow(function () {
+          console.log('Windows has opened...')
+        })
+      }
+    )
+
 }
