@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "http-server"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Naraku777/h5-xmas/issues"
   },
-  "homepage": "https://github.com/Naraku777/h5-xmas#readme"
+  "homepage": "https://github.com/Naraku777/h5-xmas#readme",
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
 }
