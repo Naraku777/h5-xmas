@@ -8,7 +8,7 @@
   <title>xmas</title>
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/page-a.css">
-  <link rel="stylesheet" href="css/page-b.css">  
+  <link rel="stylesheet" href="css/page-b.css">
 </head>
 
 <body>
@@ -42,6 +42,10 @@
       <!-- boy -->
       <figure class="xmas-boy-head"></figure>
       <figure class="xmas-boy boy-walk"></figure>
+      <!-- carousel -->
+      <div id="carousel">
+        <figure id="spinner"></figure>
+      </div>
     </section>
     <section class="page-c bg-adaptive"></section>
   </div>
@@ -50,6 +54,7 @@
 
 <script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/jquery.transit/0.9.12/jquery.transit.min.js"></script>
+<script src="js/carousel.js"></script>
 <script src="js/observer.js"></script>
 <script src="js/page-c.js"></script>
 <script src="js/page-b.js"></script>
@@ -60,9 +65,9 @@
   (function (doc) {
 
     var docEl = doc.documentElement
-    var resizeEvt = 'orientationchange' in window
-      ? 'orientationchange'
-      : 'resize'
+    var resizeEvt = 'orientationchange' in window ?
+      'orientationchange' :
+      'resize'
     var container = doc.querySelector('.container')
 
     var recalc = function () {

@@ -7,6 +7,18 @@ function PageB(element, pageComplete) {
 
   var $boy = element.find('.xmas-boy')
   var $girl = element.find('.girl')
+  var $carousel = element.find('#carousel')
+
+  var carousel = new Carousel($carousel, {
+    imgURLs: [
+      "http://img.mukewang.com/5662e29a0001905a14410901.png",
+      "http://img.mukewang.com/5662e2960001f16314410901.png",
+      "http://img.mukewang.com/5662e26f00010dea14410901.png"
+    ]
+  })
+
+  // you can call carousel.run(1) in chrome -> devtool -> console
+  window.carousel = carousel
 
   // boy action
   var boyAction = {
@@ -133,22 +145,23 @@ function PageB(element, pageComplete) {
     })
   girlAction
     .standUp()
-    .then(function(){
+    .then(function () {
       // stop walk
       return girlAction.stopWalk()
     })
-    .then(function(){
+    .then(function () {
       // walk
       return girlAction.walk()
     })
-    .then(function(){
+    .then(function () {
       // choose
-      girlAction.choose(function(){
+      girlAction.choose(function () {
         // continue walk
-        girlAction.weepWalk(function(){
+        girlAction.weepWalk(function () {
           // hug
           girlAction.hug()
         })
       })
     })
+
 }
