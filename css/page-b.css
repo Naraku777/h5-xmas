@@ -3,6 +3,7 @@
  */
 
 .container .page-b {
+  background-image: url("http://img.mukewang.com/565d09fa000145a614410901.png");
   z-index: 40;
 }
 
@@ -181,4 +182,252 @@
   background-size: 1400% 100%;
   background-position: -1300% 100%;
   display: none;
+}
+
+
+/* girl read */
+
+.girl {
+  width: 3.5rem;
+  height: 4.06rem;
+  position: absolute;
+  z-index: 10;
+  left: 1rem;
+  top: 3.2rem;
+  background: url(http://img.mukewang.com/565d09e50001156273510407.png);
+  background-size: 2100% 100%;
+}
+
+
+/* girl stand up action */
+
+.girl-stand-up {
+  left: 1.2rem;
+  -webkit-animation: girlStandUp 200ms steps(3, start) forwards;
+  -moz-animation: girlStandUp 200ms steps(3, start) forwards;
+  animation: girlStandUp 200ms steps(3, start) forwards;
+}
+
+@-webkit-keyframes girlStandUp {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: -300% 100%;
+    top: 4rem;
+  }
+}
+
+@-moz-keyframes girlStandUp {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: -300% 100%;
+    top: 4rem;
+  }
+}
+
+@keyframes girlStandUp {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: -300% 100%;
+    top: 4rem;
+  }
+}
+
+
+/* girl throw book action */
+
+.girl-throw-book {
+  top: 4rem;
+  left: .5rem;
+  -webkit-animation: girlThrowBook 300ms steps(2, start) forwards;
+  -moz-animation: girlThrowBook 300ms steps(2, start) forwards;
+  animation: girlThrowBook 300ms steps(2, start) forwards;
+}
+
+@-webkit-keyframes girlThrowBook {
+  0% {
+    background-position: -300% 100%;
+  }
+  100% {
+    background-position: -500% 100%;
+  }
+}
+
+@-moz-keyframes girlThrowBook {
+  0% {
+    background-position: -300% 100%;
+  }
+  100% {
+    background-position: -500% 100%;
+  }
+}
+
+@keyframes girlThrowBook {
+  0% {
+    background-position: -300% 100%;
+  }
+  100% {
+    background-position: -500% 100%;
+  }
+}
+
+
+/* girl walk action */
+
+.girl-walk {
+  left: 1rem;
+  -webkit-animation: girlWalk 900ms steps(4, start) infinite;
+  -moz-animation: girlWalk 900ms steps(4, start) infinite;
+  animation: girlWalk 900ms steps(4, start) infinite;
+}
+
+@-webkit-keyframes girlWalk {
+  0% {
+    background-position: -500% 100%;
+  }
+  100% {
+    background-position: -900% 100%;
+  }
+}
+
+@-moz-keyframes girlWalk {
+  0% {
+    background-position: -500% 100%;
+  }
+  100% {
+    background-position: -900% 100%;
+  }
+}
+
+@keyframes girlWalk {
+  0% {
+    background-position: -500% 100%;
+  }
+  100% {
+    background-position: -900% 100%;
+  }
+}
+
+
+/* girl stand action */
+
+.girl-stand {
+  top: 4rem;
+  background-position: -1000% 100%;
+}
+
+
+/* girl choose action */
+
+.girl-choose {
+  -webkit-animation: girlChoose 2000ms steps(2, end) forwards;
+  -moz-animation: girlChoose 2000ms steps(2, end) forwards;
+  animation: girlChoose 2000ms steps(2, end) forwards;
+}
+
+@-webkit-keyframes girlChoose {
+  0% {
+    background-position: -1000% 100%;
+  }
+  100% {
+    background-position: -1200% 100%;
+  }
+}
+
+@-moz-keyframes girlChoose {
+  0% {
+    background-position: -1000% 100%;
+  }
+  100% {
+    background-position: -1200% 100%;
+  }
+}
+
+@keyframes girlChoose {
+  0% {
+    background-position: -1000% 100%;
+  }
+  100% {
+    background-position: -1200% 100%;
+  }
+}
+
+
+/* girl weep action */
+
+.girl-weep {
+  -webkit-animation: girlWeep 450ms steps(4, end) forwards infinite;
+  -moz-animation: girlWeep 450ms steps(4, end) forwards infinite;
+  animation: girlWeep 450ms steps(4, end) forwards infinite;
+}
+
+@-webkit-keyframes girlWeep {
+  0% {
+    background-position: -1300% 100%;
+  }
+  100% {
+    background-position: -1700% 100%;
+  }
+}
+
+@-moz-keyframes girlWeep {
+  0% {
+    background-position: -1300% 100%;
+  }
+  100% {
+    background-position: -1700% 100%;
+  }
+}
+
+@keyframes girlWeep {
+  0% {
+    background-position: -1300% 100%;
+  }
+  100% {
+    background-position: -1700% 100%;
+  }
+}
+
+
+/* girl hug action */
+
+.girl-hug {
+  -webkit-animation: girlHug 450ms steps(3, end) forwards;
+  -moz-animation: girlHug 450ms steps(3, end) forwards;
+  animation: girlHug 450ms steps(3, end) forwards;
+}
+
+@-webkit-keyframes girlHug {
+  0% {
+    background-position: -1700% 100%;
+  }
+  100% {
+    left: 7.85rem;
+    background-position: -2000% 100%;
+  }
+}
+
+@-moz-keyframes girlHug {
+  0% {
+    background-position: -1700% 100%;
+  }
+  100% {
+    left: 7.85rem;
+    background-position: -2000% 100%;
+  }
+}
+
+@keyframes girlHug {
+  0% {
+    background-position: -1700% 100%;
+  }
+  100% {
+    left: 7.85rem;
+    background-position: -2000% 100%;
+  }
 }
