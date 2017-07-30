@@ -112,11 +112,41 @@ function Carousel(carousel, options) {
         'transition': '1s'
       })
       .one('transitionend webkitTransitionEnd', function () {
-        $spinner.css('-webkit-transition', '')
-        $spinner.css('-moz-transition', '')
-        $spinner.css('transition', '')
-        console.log('Rotated...')
+        callback & callback()
       })
+  }
+
+  this.playVideo = function () {
+    var index = curIndex
+    var element = element || $cotentElements.eq(index)
+
+    var videoHTML = '<video preload="auto" class="bounceIn"' +
+      'style="width:50%; height:50%; position:absolute;' +
+      'left:30%; top:35%;"></video>'
+    var $video = $(videoHTML)
+    $video.css({
+      'position': 'absolute',
+      'z-index': '999'
+    })
+
+    // URL
+    $video.attr('src', options.videoURLs[index])
+    // Play
+    $video.on('loadeddata', function () {
+      $video[0].play()
+    })
+    // Stop
+    $video.on('ended', function () {
+      $video[0].pause()
+      // Bounce out
+      $video
+        .addClass('bounceOut')
+        .one('transitionend webkitTransitionEnd', function () {
+          $video.remove()
+        })
+    })
+
+    $carousel.after($video)
   }
 
 }

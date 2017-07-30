@@ -14,6 +14,11 @@ function PageB(element, pageComplete) {
       "http://img.mukewang.com/5662e29a0001905a14410901.png",
       "http://img.mukewang.com/5662e2960001f16314410901.png",
       "http://img.mukewang.com/5662e26f00010dea14410901.png"
+    ],
+    videoURLs: [
+      "http://www.imooc.com/upload/media/qx-one.mp4",
+      "http://www.imooc.com/upload/media/qx-two.mp4",
+      "http://www.imooc.com/upload/media/qx-three.mp4"
     ]
   })
 
