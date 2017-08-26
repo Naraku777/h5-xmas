@@ -66,7 +66,9 @@ var Xmas = function () {
 
   // new PageA($pageA)
 
-  new PageB($pageB)
+  // new PageB($pageB)
+
+  new PageC($pageC)
 }
 
 
