@@ -10,6 +10,36 @@
   <link rel="stylesheet" href="css/page-a.css">
   <link rel="stylesheet" href="css/page-b.css">
   <link rel="stylesheet" href="css/page-c.css">
+
+  <script>
+    var config = {};
+
+    // rem
+    (function (doc) {
+
+      var docEl = doc.documentElement
+      var resizeEvt = 'orientationchange' in window ?
+        'orientationchange' :
+        'resize'
+      var container = doc.querySelector('.container')
+
+      var recalc = function () {
+        // Init proportion
+        var proportion = 900 / 1440
+        var clientWidth = docEl.clientWidth
+        // Adaptive container height
+        doc.body.style.height = clientWidth * proportion + 'px'
+        docEl.style.fontSize = 20 * (clientWidth / 320) + 'px'
+        config.clientWidth = clientWidth
+        config.clientHeight = clientWidth * proportion
+      }
+
+      window.addEventListener(resizeEvt, recalc, false)
+      doc.addEventListener('DOMContentLoaded', recalc, false)
+
+    })(document)
+
+  </script>
 </head>
 
 <body>
@@ -59,9 +89,9 @@
           <div class="window-right hover"></div>
         </div>
       </div>
-      <!-- 雪花 -->
-      <canvas id="snowflake"></canvas>
     </section>
+    <!-- 雪花 -->
+    <canvas id="snowflake"></canvas>
   </div>
 
 </body>
@@ -75,31 +105,5 @@
 <script src="js/page-b.js"></script>
 <script src="js/page-a.js"></script>
 <script src="js/xmas.js"></script>
-
-<script>
-  (function (doc) {
-
-    var docEl = doc.documentElement
-    var resizeEvt = 'orientationchange' in window ?
-      'orientationchange' :
-      'resize'
-    var container = doc.querySelector('.container')
-
-    var recalc = function () {
-      // Init proportion
-      var proportion = 900 / 1440
-      var clientWidth = docEl.clientWidth
-      // Adaptive container height
-      doc.body.style.height = clientWidth * proportion + 'px'
-      docEl.style.fontSize = 20 * (clientWidth / 320) + 'px'
-    }
-
-    window.addEventListener(resizeEvt, recalc, false)
-    doc.addEventListener('DOMContentLoaded', recalc, false)
-
-
-  })(document)
-
-</script>
 
 </html>
