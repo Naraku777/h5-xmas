@@ -1,47 +1,157 @@
 $(function () {
-  // Elment
-  var snowElem = document.getElementById('snowflake')
-  var canvasCtx = snowElem.getContext('2d')
-  // Size
-  var width = config.clientWidth
-  var height = config.clientHeight
-  // Canvas size
-  snowElem.width = width
-  snowElem.height = height
-  // Snow count
-  var SNOW_NUM = 50
 
-  // Snow class
-  function Snow() {
-    this.radius = randomInRange(3, 10)
-    // Initially position x & y
-    this.x = (Math.random() * width)
-    this.y = (Math.random() * height)
-    // Set alpha
-    this.alpha = randomInRange(0.5, 1)
-    // Draw snow ball
-    this.render()
+  /**
+   * Snowflake Class
+   *
+   * @param {string} elementName
+   */
+  function Snowflake(elementName) {
+    // Elment
+    var snowElem = document.getElementById(elementName)
+    var canvasCtx = snowElem.getContext('2d')
+    // Size
+    var width = config.clientWidth
+    var height = config.clientHeight
+    // Canvas size
+    snowElem.width = width
+    snowElem.height = height
+    // Snow count
+    var SNOW_NUM = 50
+    // Build snowfalake Object
+    var snowflakeObjects = initSnowflakes(SNOW_NUM, width, height)
+    var snowflakeCount = snowflakeObjects.length
+
+    /**
+     * Draw snowflake in canvas
+     *
+     */
+    var render = function () {
+      canvasCtx.clearRect(0, 0, width, height)
+      for (var i = 0; i < snowflakeCount; ++i) {
+        snowflakeObjects[i].render(canvasCtx)
+      }
+    }
+
+    /**
+     * Update snowflake in canvas
+     *
+     */
+    var update = function () {
+      for (var i = 0; i < snowflakeCount; ++i) {
+        snowflakeObjects[i].update()
+      }
+    }
+
+    /**
+     * Render and update snowflake in canvas
+     *
+     */
+    var renderAndUpdate = function () {
+      render()
+      update()
+      requestAnimationFrame(renderAndUpdate)
+    }
+
+    // Go
+    renderAndUpdate()
   }
 
   /**
-   * Draw snow ball
+   * Get snowflake object array
    *
+   * @param {number} snowflakeNum
+   * @param {number} width
+   * @param {number} height
+   * @returns {[object]}
    */
-  Snow.prototype.render = function () {
-    // 开始画一个画布中的一条新路径
+  function initSnowflakes(snowflakeNum, width, height) {
+    // Snowflake options
+    var opts = {
+      // Radius
+      minRadius: 3,
+      maxRadius: 10,
+      // Movement range
+      maxX: width,
+      maxY: height,
+      // Speed
+      minSpeedY: 0.05,
+      maxSpeedY: 2,
+      speedX: 0.05,
+      // Alpha
+      minAlpha: 0.5,
+      maxAlpha: 1,
+      minMoveX: 4,
+      maxMoveX: 18
+    }
+    var snowArray = []
+    for (var i = 0; i < snowflakeNum; i++) {
+      snowArray[i] = new Snow(opts)
+    }
+    return snowArray
+  }
+
+
+
+
+  /**
+   * Snow class
+   *
+   * @param {object} opts
+   */
+  function Snow(opts) {
+    this.opts = opts
+    this.radius = randomInRange(opts.minRadius, opts.maxRadius)
+    // Initially position x & y
+    this.initX = Math.random() * opts.maxX
+    this.y = -(Math.random() * 500)
+    // Speed
+    this.speedY = randomInRange(opts.minSpeedY, opts.maxSpeedY)
+    this.speedX = opts.speedX
+    // Set alpha
+    this.alpha = randomInRange(opts.minAlpha, opts.maxAlpha)
+    // Angle (default: 360)
+    this.angle = Math.random(Math.PI * 2)
+    // Move distance
+    this.x = this.initX + Math.sin(this.angle)
+    // X's move distance
+    this.moveX = randomInRange(opts.minMoveX, opts.maxMoveX)
+  }
+
+
+  /**
+   * Draw snow in canvas
+   *
+   * @param {object} canvasCtx
+   */
+  Snow.prototype.render = function (canvasCtx) {
+    // Begin the path
     canvasCtx.beginPath()
-    // 填充路径的颜色
+    // The color to fill
     canvasCtx.fillStyle = 'rgba(255, 255, 255, ' + this.alpha + ')'
-    // 一个中心点和半径，为一个画布的当前子路径添加一条弧线
-    // 坐标，圆，沿着圆指定弧的开始点和结束点的一个角度
-    // 弧沿着圆周的逆时针方向（TRUE）还是顺时针方向（FALSE）遍历
     // context.arc(x, y, radius, startAngle, endAngle, anticlockwise)
     canvasCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true)
-    // 关闭子路径
+    // Close the path
     canvasCtx.closePath()
-    // fill() 方法使用 fillStyle 属性所指定的颜色
-    // 渐变和模式来填充当前路径
+    // Fill the path
     canvasCtx.fill()
+  }
+
+  /**
+   * Update the snow in canvas
+   * - If overflow
+   * - If max angle
+   *
+   */
+  Snow.prototype.update = function () {
+    this.y += this.speedY
+    if (this.y > this.opts.maxY) {
+      this.y -= this.opts.maxY
+    }
+    this.angle += this.speedX
+    if (this.angle > Math.PI * 2) {
+      this.angle -= Math.PI * 2
+    }
+    this.x = this.initX + this.moveX * Math.sin(this.angle)
   }
 
   /**
@@ -55,8 +165,5 @@ $(function () {
     return Math.random() * (max - min) + min
   }
 
-  // Start draw snow balls
-  for (var i = 0; i < SNOW_NUM; i++) {
-    new Snow()
-  }
+  Snowflake('snowflake')
 })
